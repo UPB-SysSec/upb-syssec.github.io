@@ -121,7 +121,7 @@ This sanitization is required, as otherwise there might be biases towards the fo
 This reduces the variance in the repetition factor from [Table 1](#tab:file-format-occurrences).
 
 As you can see in the graph below, `.obj`, `.step`, and `.f3d` all follow a near identical curve that shows rapid increases in usage.
-`.3mf` shows fewer usage overall, but a rapid increase since its inital release.
+`.3mf` shows fewer usage overall, but a rapid increase since its initial release.
 `.sldprt`, `.fcstd`, `.dxf`, `.gcode`, and `.blend` show a more steady growth.
 `.ipt` and `.amf` both fluctuate more than others and seem more or less stagnant.
 `.skp`, `.123dx` are declining in usage.
@@ -159,7 +159,7 @@ In the case of `.123dx` this is expected, since AutoDesk discontinued the 123D p
     }
   });
 
-  fetch("/assets/data/2021-10-08-3d-printing-file-format-usage/parsed_data/format_uploads_per_month_per_object.json")
+  fetch("/assets/data/3d-printing-file-format-usage/format_uploads_per_month_per_object.json")
     .then((response) => response.json())
     .then(function(data) {
       const ctx = document.getElementById('usageOverTime');
@@ -233,39 +233,40 @@ In the case of `.123dx` this is expected, since AutoDesk discontinued the 123D p
 Download the data we used (collected in June 2021):
 
 - `/raw_data`
-  - [`thingiverse.zip`](/assets/data/2021-10-08-3d-printing-file-format-usage/raw_data/thingiverse.zip) (5.8 GB)
-  - [`myminifactory.zip`](/assets/data/2021-10-08-3d-printing-file-format-usage/raw_data/myminifactory.zip) (296 KB)
+  - <a href="https://git.cs.uni-paderborn.de/syssec/projects/blog-assets/-/raw/main/3d-printing-file-format-usage/raw_data/thingiverse.zip?inline=false" download><code>thingiverse.zip</code></a> (5.8 GB)
+  - <a href="https://git.cs.uni-paderborn.de/syssec/projects/blog-assets/-/raw/main/3d-printing-file-format-usage/raw_data/myminifactory.zip?inline=false" download><code>myminifactory.zip</code></a> (296 KB)
 
 - `/parsed_data`
-  - <a href="/assets/data/2021-10-08-3d-printing-file-format-usage/parsed_data/extracted_data.json" download><code>extracted_data.json</code></a> (228 MB)  
+  - <a href="https://git.cs.uni-paderborn.de/syssec/projects/blog-assets/-/raw/main/3d-printing-file-format-usage/parsed_data/extracted_data.json?inline=false" download><code>extracted_data.json</code></a> (228 MB)  
     The raw file information from both datasets.
     This is an array where each entry matches a single object in the database of either webpages.
     The entries are an array again that lists all file names uploaded for that entry.
     The single files are tuples of the file name and the upload time in UNIX format.
     `failed_opens` states how many source files failed to open (corrupted file).
     `nr_thingiverse_files` and `nr_myminifactory_files` state how many files where added from the respective database.
-  - <a href="/assets/data/2021-10-08-3d-printing-file-format-usage/parsed_data/file_analysis_raw.json" download><code>file_analysis_raw.json</code></a> (6.7 MB)  
+  - <a href="https://git.cs.uni-paderborn.de/syssec/projects/blog-assets/-/raw/main/3d-printing-file-format-usage/parsed_data/file_analysis_raw.json?inline=false" download><code>file_analysis_raw.json</code></a> (6.7 MB)  
     - `suffix_raw` all suffixes counted.
     - `suffixes_unified` all suffixes converted to lower case and counted.
     - `combinations_of_filetypes` all suffixes that contain one of the types listed in [Table 1](#tab:file-format-occurrences) counted.
     - `object_w_type_file` number of objects that have an associated file with a suffix from [Table 1](#tab:file-format-occurrences).
-  - <a href="/assets/data/2021-10-08-3d-printing-file-format-usage/parsed_data/file_analysis.json" download><code>file_analysis.json</code></a> (9.4 KB)  
+  - <a href="https://git.cs.uni-paderborn.de/syssec/projects/blog-assets/-/raw/main/3d-printing-file-format-usage/parsed_data/file_analysis.json?inline=false" download><code>file_analysis.json</code></a> (9.4 KB)  
     Statistics about the file types in [Table 1](#tab:file-format-occurrences).
-  - <a href="/assets/data/2021-10-08-3d-printing-file-format-usage/parsed_data/format_uploads_per_day.json" download><code>format_uploads_per_day.json</code></a> (1.6 MB)  
+  - <a href="https://git.cs.uni-paderborn.de/syssec/projects/blog-assets/-/raw/main/3d-printing-file-format-usage/parsed_data/format_uploads_per_day.json?inline=false" download><code>format_uploads_per_day.json</code></a> (1.6 MB)  
     Maps the upload day of an object and counts them.
-  - <a href="/assets/data/2021-10-08-3d-printing-file-format-usage/parsed_data/format_uploads_per_day_per_object.json" download><code>format_uploads_per_day_per_object.json</code></a> (1.5 MB)  
+  - <a href="https://git.cs.uni-paderborn.de/syssec/projects/blog-assets/-/raw/main/3d-printing-file-format-usage/parsed_data/format_uploads_per_day_per_object.json?inline=false" download><code>format_uploads_per_day_per_object.json</code></a> (1.5 MB)  
     Same as `format_uploads_per_day` but uploads of the same type are ignored on the same day and object.
-  - <a href="/assets/data/2021-10-08-3d-printing-file-format-usage/parsed_data/format_uploads_per_month_per_object.json" download><code>format_uploads_per_month_per_object.json</code></a> (12 KB)  
+  - <a href="https://git.cs.uni-paderborn.de/syssec/projects/blog-assets/-/raw/main/3d-printing-file-format-usage/parsed_data/format_uploads_per_month_per_object.json?inline=false" download><code>format_uploads_per_month_per_object.json</code></a> (12 KB)  
     Data from `format_uploads_per_day_per_object` but ordered so it can be used in the webpage for the graph.
     Data is grouped by month and their type.
-  - <a href="/assets/data/2021-10-08-3d-printing-file-format-usage/parsed_data/number_of_files_per_object.json" download><code>number_of_files_per_object.json</code></a> (2.8 KB)  
+  - <a href="https://git.cs.uni-paderborn.de/syssec/projects/blog-assets/-/raw/main/3d-printing-file-format-usage/parsed_data/number_of_files_per_object.json?inline=false" download><code>number_of_files_per_object.json</code></a> (2.8 KB)  
     Multiple statistics about the file types from [Table 1](#tab:file-format-occurrences).
 
 - `/scripts`
-  - [`analyze_data.py`](/assets/data/2021-10-08-3d-printing-file-format-usage/scripts/analyze_data.py) (11 KB)
-  - [`extract_data.py`](/assets/data/2021-10-08-3d-printing-file-format-usage/scripts/extract_data.py) (2.3 KB)
-  - [`get_data.py`](/assets/data/2021-10-08-3d-printing-file-format-usage/scripts/get_data.py) (2.6 KB)
-  - [`plot_data.py`](/assets/data/2021-10-08-3d-printing-file-format-usage/scripts/plot_data.py) (1.5 KB)
+  - <a href="https://git.cs.uni-paderborn.de/syssec/projects/blog-assets/-/raw/main/3d-printing-file-format-usage/scripts/analyze_data.py?inline=false" download><code>analyze_data.py</code></a> (11 KB)
+  - <a href="https://git.cs.uni-paderborn.de/syssec/projects/blog-assets/-/raw/main/3d-printing-file-format-usage/scripts/extract_data.py?inline=false" download><code>extract_data.py</code></a> (2.3 KB)
+  - <a href="https://git.cs.uni-paderborn.de/syssec/projects/blog-assets/-/raw/main/3d-printing-file-format-usage/scripts/get_data.py?inline=false" download><code>get_data.py</code></a> (2.6 KB)
+  - <a href="https://git.cs.uni-paderborn.de/syssec/projects/blog-assets/-/raw/main/3d-printing-file-format-usage/scripts/plot_data.py?inline=false" download><code>plot_data.py</code></a> (1.5 KB)
+
 
 ### Option 2
 
@@ -283,10 +284,10 @@ For downloading the data once this was fine.
 
 1. Get access tokens for `thingiverse.com` and `myminifactory.com`'s APIs.
    - `thingiverse.com`
-     - [register an app](https://www.thingiverse.com/apps/create) here: `https://www.thingiverse.com/apps/create`
+     - [register an app](https://www.thingiverse.com/apps/create)
      - after the creation you get an token for the whole app
    - `myminifactory.com`
-     - [register an app](https://www.myminifactory.com/settings/developer) here: `https://www.myminifactory.com/settings/developer`
+     - [register an app](https://www.myminifactory.com/settings/developer)
      - the token shown after creation has not the required access right, you need a user-based token
      - go to: `https://auth.myminifactory.com/web/authorize?client_id=XXX&redirect_uri=YYY&response_type=token&state=RANDOM_STRING`
        where `client_id` should be the name of you app and `redirect_uri` the same redirect URI that was given for the registration.
