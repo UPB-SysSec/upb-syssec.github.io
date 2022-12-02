@@ -2,21 +2,20 @@
 layout: distill
 title: Usage Statistics of 3D Printing File Formats
 description: an overview of the usage of different file formats used for 3D printing
-date: 2021-10-08
+date: 2022-12-02
 
 authors:
   - name: Jost Rossel
     affiliations:
       name: Paderborn University
 
-bibliography: 2021-10-08-3d-printing-file-format-usage.bib
+bibliography: 3d-printing-file-format-usage.bib
 
 toc:
   - name: How We Collected the Data
   - name: Overview of the Data
   - name: Trend of Usage over Time
   - name: How to Get the Data
-
 ---
 
 During our current research on the security of 3D printers and the surrounding ecosystem, we asked ourselves how well different file formats are used.
@@ -27,6 +26,7 @@ The data presented here is based on the publicly available files uploaded to bot
 The data does not contain any information about the usage of different file formats outside this specific use case of private users sharing their 3D printing model with others; especially not regarding an industrial context.
 No other data is freely available.
 The [How to Get the Data](#how-to-get-the-data) section below provides download links and how-tos for our dataset.
+The data presented here was collected in June 2021.
 
 ## How We Collected the Data
 
@@ -61,9 +61,10 @@ The difference in the repetition factor between formats might be caused by limit
 <div class="l-body-outset"><hr></div>
 
 <style>
-.footnote-ref sup{color: var(--global-theme-color);}
+.footnote-ref {color: var(--global-theme-color) !important; border-bottom: none; text-decoration: none;}
 .distill-fn-style li{color: var(--global-distill-app-color) !important; font-size: 0.8em; line-height: 1.7em;}
-.distill-fn-style a{color: var(--global-distill-app-color) !important;}
+.distill-fn-style a{color: var(--global-distill-app-color) !important; border-bottom: none; text-decoration: none;}
+.distill-fn-style a:hover{color: var(--global-hover-color) !important; border-bottom: none; text-decoration: none;}
 </style>
 
 <span id='tab:file-format-occurrences'>**Table 1**</span>
@@ -71,34 +72,34 @@ Total number of occurrences/uploads of all file formats that occur more than 10,
 The suffixes where unified to their lower-case version an the following suffixes were omitted: `.pdf`, `.zip`, `.0`, `.1`, `.svg`. AMF is included as it is mentioned by various rankings <d-cite key="3DPrinterFile2021,Common3DPrinting2019,WhatFileFormats2021"/>.
 The repetition factor indicates how many files of this type were uploaded to a single object on average.
 
-| Suffix             | File Format Description                                                                                                                               |  Total Occurrences |  Repetition Factor |
-| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------- | -----------------: | -----------------: |
-| `.stl`             | STereoLithography <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>a</sup></a>                                                 |          4,592,742 |               2.13 |
-| `.scad`            | [OpenSCAD](http://openscad.org/) project file                                                                                                         |             77,585 |               1.42 |
-| `.obj`             | Wavefront Object <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>b</sup></a>                                                  |             65,556 |               1.86 |
-| `.step`            | <span>*STandard for the Exchange of Product model data* <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>c</sup></a>           |             44,920 |               1.72 |
-| `.sldprt`          | [SolidWorks](https://www.solidworks.com/) Part file                                                                                                   |             43,599 |               2.00 |
-| `.skp`             | [SketchUp](https://www.sketchup.com/) project file                                                                                                    |             32,522 |               1.48 |
-| `.f3d`             | [Fusion 360](https://www.autodesk.com/products/fusion-360) project file                                                                               |             32,275 |               1.30 |
-| `.fcstd`           | [FreeCAD](https://www.freecadweb.org/) project file                                                                                                   |             21,436 |               1.52 |
-| `.dxf`             | *Drawing Interchange File* for *AutoCAD* <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>d</sup></a>                          |             20,566 |               1.94 |
-| `.gcode`           | Toolpath instruction for manufacturing devices <a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>e</sup></a>                    |             16,713 |               1.52 |
-| `.ipt`             | [Inventor](https://www.autodesk.com/products/inventor) project file                                                                                   |             14,905 |               1.96 |
-| `.3mf`             | 3D Manufacturing Format <a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>f</sup></a>                                           |             14,823 |               1.63 |
-| `.blend`           | [Blender](https://www.blender.org/) project file                                                                                                      |             13,720 |               1.61 |
-| `.123dx`           | [123D](https://www.autodesk.com/solutions/123d-apps) project file <a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>g</sup></a> |             12,146 |               1.55 |
-| $\quad\vdots\quad$ | $\quad\vdots\quad$                                                                                                                                    | $\quad\vdots\quad$ | $\quad\vdots\quad$ |
-| `.amf`             | Additive Manufacturing Format <a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>h</sup></a>                                     |              2,451 |               1.54 |
+| Suffix    | File Format Description                                                                                                                               | Total Occurrences | Repetition Factor |
+| --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------: | ----------------: |
+| `.stl`    | STereoLithography <sup><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref">a</a></sup>                                                 |         4,592,742 |              2.13 |
+| `.scad`   | [OpenSCAD](http://openscad.org/) project file                                                                                                         |            77,585 |              1.42 |
+| `.obj`    | Wavefront Object <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>b</sup></a>                                                  |            65,556 |              1.86 |
+| `.step`   | <span>*STandard for the Exchange of Product model data* <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>c</sup></a>           |            44,920 |              1.72 |
+| `.sldprt` | [SolidWorks](https://www.solidworks.com/) Part file                                                                                                   |            43,599 |              2.00 |
+| `.skp`    | [SketchUp](https://www.sketchup.com/) project file                                                                                                    |            32,522 |              1.48 |
+| `.f3d`    | [Fusion 360](https://www.autodesk.com/products/fusion-360) project file                                                                               |            32,275 |              1.30 |
+| `.fcstd`  | [FreeCAD](https://www.freecadweb.org/) project file                                                                                                   |            21,436 |              1.52 |
+| `.dxf`    | *Drawing Interchange File* for *AutoCAD* <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>d</sup></a>                          |            20,566 |              1.94 |
+| `.gcode`  | Toolpath instruction for manufacturing devices <a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>e</sup></a>                    |            16,713 |              1.52 |
+| `.ipt`    | [Inventor](https://www.autodesk.com/products/inventor) project file                                                                                   |            14,905 |              1.96 |
+| `.3mf`    | 3D Manufacturing Format <a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>f</sup></a>                                           |            14,823 |              1.63 |
+| `.blend`  | [Blender](https://www.blender.org/) project file                                                                                                      |            13,720 |              1.61 |
+| `.123dx`  | [123D](https://www.autodesk.com/solutions/123d-apps) project file <a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>g</sup></a> |            12,146 |              1.55 |
+| ︙         | ︙                                                                                                                                                     |                 ︙ |                 ︙ |
+| `.amf`    | Additive Manufacturing Format <a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>h</sup></a>                                     |             2,451 |              1.54 |
 
 <ol class="distill-fn-style" type="a">
-<li id="fn1">Defined by <i>3D Systems</i> in 1988 <d-cite key="STLSTereoLithographyFile2019"/>. The original specification is not available, but various resources describe the format based on the original specification<d-cite key="STL,STLAFilesASCII,StLFormatFabbers"/>.<a href="#fnref1" class="footnote-backlink" role="doc-backlink">[↩︎]</a></li>
-<li id="fn2">First specified by <i>Wavefront Technologies</i> for their <i>Advanced Visualizer</i> software in the 1990s <d-cite key="wavefronttechnologiesAdvancedVisualizerAppendixearly1990s"/>. “[From] a legal standpoint, the specification is probably proprietary to Autodesk” <d-cite key="WavefrontOBJFile2020"/> as Wavefront Technologies was eventually indirectly acquired by Autodesk <d-cite key="WavefrontOBJFile2020"/>.<a href="#fnref2" class="footnote-backlink" role="doc-backlink">[↩︎]</a></li>
-<li id="fn3">Designed as an exchange format between CAD applications. Standardized through the ISO 10303 family <d-cite key="iso10303-1"/>, part 21 <d-cite key="iso10303-21"/> defines the file format. Alternatively, uses the suffix <code>.stp</code>.<a href="#fnref3" class="footnote-backlink" role="doc-backlink">[↩︎]</a></li>
-<li id="fn4">Designed as an exchange format between CAD applications. Standardized by Autodesk for their AutoCAD software <d-cite key="dxf"/>.<a href="#fnref4" class="footnote-backlink" role="doc-backlink">[↩︎]</a></li>
-<li id="fn5">There are multiple standards defining G-codes (e.g. <d-cite key="din66025-1,iso6983-1"/>) but most applications and/or firmwares define their own extensions and variations.<a href="#fnref5" class="footnote-backlink" role="doc-backlink">[↩︎]</a></li>
+<li id="fn1">Defined by <i>3D Systems</i> in 1988 <d-cite key="STLSTereoLithographyFile2019"/>. The original specification is not available, but various resources describe the format based on the original specification<d-cite key="STL,STLAFilesASCII,StLFormatFabbers"/>. <a href="#fnref1" class="footnote-backlink" role="doc-backlink">[↩︎]</a></li>
+<li id="fn2">First specified by <i>Wavefront Technologies</i> for their <i>Advanced Visualizer</i> software in the 1990s <d-cite key="wavefronttechnologiesAdvancedVisualizerAppendixearly1990s"/>. “[From] a legal standpoint, the specification is probably proprietary to Autodesk” <d-cite key="WavefrontOBJFile2020"/> as Wavefront Technologies was eventually indirectly acquired by Autodesk <d-cite key="WavefrontOBJFile2020"/>. <a href="#fnref2" class="footnote-backlink" role="doc-backlink">[↩︎]</a></li>
+<li id="fn3">Designed as an exchange format between CAD applications. Standardized through the ISO 10303 family <d-cite key="iso10303-1"/>, part 21 <d-cite key="iso10303-21"/> defines the file format. Alternatively, uses the suffix <code>.stp</code>. <a href="#fnref3" class="footnote-backlink" role="doc-backlink">[↩︎]</a></li>
+<li id="fn4">Designed as an exchange format between CAD applications. Standardized by Autodesk for their AutoCAD software <d-cite key="dxf"/>. <a href="#fnref4" class="footnote-backlink" role="doc-backlink">[↩︎]</a></li>
+<li id="fn5">There are multiple standards defining G-codes (e.g. <d-cite key="din66025-1,iso6983-1"/>) but most applications and/or firmwares define their own extensions and variations. <a href="#fnref5" class="footnote-backlink" role="doc-backlink">[↩︎]</a></li>
 <li id="fn6">The specification <d-cite key="3MF-core"/> is created by the 3MF Consortium. The first version of the specification was published in 2015. The specification is open-source and managed in a Git repository. The specification was not uploaded to GitHub until 2018 (Version 1.2) <d-cite key="3MF-core"/>. <a href="http://web.archive.org/web/20160320020131/https://3mf.io/wp-content/uploads/2015/04/3MFcoreSpec_1.0.1.pdf">Version 1.0 was initially uploaded to the 3MF Consortium’s website</a> but has since been removed.<a href="#fnref6" class="footnote-backlink" role="doc-backlink">[↩︎]</a></li>
-<li id="fn7">Discontinued by AutoDesk in 2016. <a href="http://web.archive.org/web/20150430070500/http://www.123dapp.com/">Original Webpage</a>.<a href="#fnref7" class="footnote-backlink" role="doc-backlink">[↩︎]</a></li>
-<li id="fn8">Initially proposed as “STL 2.0” by Hiller et.al. <d-cite key="hillerSTLProposalUniversal2009"/>. Since the initial proposal, it has been jointly specified by ISO &amp; ASTM <d-cite key="iso52915"/>.<a href="#fnref8" class="footnote-backlink" role="doc-backlink">[↩︎]</a></li>
+<li id="fn7">Discontinued by AutoDesk in 2016. <a href="http://web.archive.org/web/20150430070500/http://www.123dapp.com/">Original Webpage</a>. <a href="#fnref7" class="footnote-backlink" role="doc-backlink">[↩︎]</a></li>
+<li id="fn8">Initially proposed as “STL 2.0” by Hiller et.al. <d-cite key="hillerSTLProposalUniversal2009"/>. Since the initial proposal, it has been jointly specified by ISO &amp; ASTM <d-cite key="iso52915"/>. <a href="#fnref8" class="footnote-backlink" role="doc-backlink">[↩︎]</a></li>
 </ol>
 
 
@@ -114,7 +115,7 @@ Alternatively, the model is uploaded as an OBJ file, or in popular exchange file
 
 ## Trend of Usage over Time
 
-To get an overview of the change in usage we ploted the uploads per month of each file format.
+To get an overview of the change in usage we plotted the uploads per month of each file format.
 
 As some file formats support multiple models in one file and others do not, we ignore duplicate suffixes on files for the same object that were uploaded on the same day.
 This sanitization is required, as otherwise there might be biases towards the formats that do not support multiple models in one file, as a user would have to upload multiple files for a complex model with separated parts.
