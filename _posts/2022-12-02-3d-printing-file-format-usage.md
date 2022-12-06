@@ -8,8 +8,12 @@ authors:
   - name: Jost Rossel
     affiliations:
       name: Paderborn University
+    bibtex: Rossel, J.
 
 bibliography: 3d-printing-file-format-usage.bib
+
+# citation: |
+#   bibtex entry here
 
 toc:
   - name: How We Collected the Data
