@@ -1,0 +1,50 @@
+@thesis{Breuch:22:BA-WKD,
+    author = {Breuch, Philipp Michael},
+    title = {Web Key Directory and other key exchange methods for OpenPGP},
+    type = {Bachlor's Thesis},
+    year = {2022},
+    month = {07},
+    publisher = {Paderborn University Library},
+    address = {University Paderborn},
+    abstract = {The cryptographic protocol OpenPGP exists since 1991 and is used for the encryption and signing of e-mails and data. OpenPGP uses public key cryptography and requires that key authenticity is verified in a secure manner. Historically this is done via key servers and a decentralized trust model, the Web of Trust. In this thesis, we describe and analyze the OpenPGP key exchange method ``Web Key Directory''. We provide security definitions for OpenPGP key exchange methods. Based on these definitions, we evaluate whether the Web Key Directory specification and its reference implementation are secure. We find inconsistencies and specification gaps in the Web Key Directory specification draft. We reveal that the main assumption of the Web Key Directory Update Protocol is too vague. We describe several scenarios and interpretations of the main assumption and analyze them. We can show that the Web Key Directory Update Protocol is vulnerable in multiple scenarios and interpretations. Furthermore, we find errors in the reference implementation. We could utilize errors to describe an attack on the reference implementation with almost no assumptions. It allows an attacker to illegitimately publish OpenPGP keys for any e-mail address for any domain of a Web Key Directory provider.},
+    note = {Date of Submission: 07.07.2022},
+    doi = {10.17619/UNIPB/1-1654},
+    language = {eng}
+}
+
+@misc{evil32,
+      author = {Klafter, Richard and Swanson, Eric},
+      title = {Evil 32: Check Your GPG Fingerprints},
+      url = {https://evil32.com/},
+      urldate = {2022-07-07}
+}
+
+@InProceedings{Ulrich:11:IWoT,
+    author="Ulrich, Alexander
+        and Holz, Ralph
+        and Hauck, Peter
+        and Carle, Georg",
+    editor="Atluri, Vijay
+        and Diaz, Claudia",
+    title={Investigating the OpenPGP Web of Trust},
+    booktitle="Computer Security -- ESORICS 2011",
+    year="2011",
+    publisher="Springer Berlin Heidelberg",
+    address="Berlin, Heidelberg",
+    pages="489--507",
+    abstract="We present results of a thorough analysis of the OpenPGP Web of Trust. We conducted our analysis on a recent data set with a focus on determining properties like usefulness and robustness. To this end, we analyzed graph topology, identified the strongly connected components and derived properties like verifiability of keys, signature chain lengths and redundant signature paths for nodes. Contrary to earlier works, our analysis revealed the Web of Trust to be only similar to a scale-free network, with different properties regarding the hub structure and its influence on overall connectivity. We also analyzed the community structure of the Web of Trust and mapped it to social relationships. Finally, we present statistics which cryptographic algorithms are in use and give recommendations.",
+    isbn="978-3-642-23822-2"
+}
+
+@techreport{koch-openpgp-webkey-service-14,
+    number =    {draft-koch-openpgp-webkey-service-14},
+    type =      {Internet-Draft},
+    institution =   {Internet Engineering Task Force},
+    publisher = {Internet Engineering Task Force},
+    note =      {Work in Progress},
+    url =       {https://datatracker.ietf.org/doc/draft-koch-openpgp-webkey-service/14/},
+    author =    {Werner Koch},
+    title =     {OpenPGP Web Key Directory},
+    pagetotal = 19,
+    abstract =  {This specification describes a service to locate OpenPGP keys by mail address using a Web service and the HTTPS protocol. It also provides a method for secure communication between the key owner and the mail provider to publish and revoke the public key.},
+}
