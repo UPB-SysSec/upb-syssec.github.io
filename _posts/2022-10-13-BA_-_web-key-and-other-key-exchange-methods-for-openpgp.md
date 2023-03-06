@@ -1,18 +1,30 @@
 ---
-layout: post
+layout: distill
 title:  Web Key Directory and Other Key Exchange Methods for OpenPGP
-date:   2022-10-13 00:00:00
-description:
-  This is a guest blog post by Philipp Breuch.
-  He completed his Bachelor's degree at Paderborn University in August, 2022.
-  He wrote his Bachelor's Thesis "Web Key Directory and Other Key Exchange Methods for OpenPGP" at the System Security Research Group supervised by Prof. Dr.-Ing. Juraj Somorovsky and Dipl.-Math. Marcus Brinkmann.
+date:   2023-03-06
+authors:
+  - name: Philipp Breuch
+    affiliations:
+      name: Paderborn University
+    bibtex: Breuch, P.
+description: a brief overview of OpenPGP's Web Key Directory and its security
 tags:
   - OpenPGP
   - GnuPG
   - Web Key Directory
-  - WKD
 categories:
   - Bachelor's Thesis
+
+toc:
+  - name: 'In a nutshell: Web Key Directory'
+    subsections:
+    - name: Key Discovery
+    - name: Update Protocol
+  - name: Security Analysis
+    subsections:
+    - name: Update Protocol Main Assumption
+    - name: Implementation Errors and Faults
+    - name: Attack on the Update Protocol Implementation
 ---
 
 <!-- CSS snippet to make svg images with transparent background dark mode friendly.
