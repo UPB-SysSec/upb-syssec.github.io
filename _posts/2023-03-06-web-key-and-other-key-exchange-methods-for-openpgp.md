@@ -39,7 +39,7 @@ This is a guest blog post by Philipp Breuch.
 He completed his Bachelor's degree at Paderborn University in August, 2022.
 He wrote his Bachelor's Thesis "Web Key Directory and Other Key Exchange Methods for OpenPGP" at the System Security Research Group supervised by Prof. Dr.-Ing. Juraj Somorovsky and Dipl.-Math. Marcus Brinkmann.
 
-The complete Bachelor's Thesis is available [here](/assets/pdf/BA_-_web-key-and-other-key-exchange-methods-for-openpgp.pdf).
+The complete Bachelor's Thesis is available [here](/assets/pdf/BA_web-key-and-other-key-exchange-methods-for-openpgp.pdf).
 
 ---
 
