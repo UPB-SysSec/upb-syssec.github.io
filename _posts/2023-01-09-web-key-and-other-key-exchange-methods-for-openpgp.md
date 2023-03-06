@@ -1,7 +1,7 @@
 ---
 layout: distill
 title: "Bachelor's Thesis: Web Key Directory and Other Key Exchange Methods for OpenPGP"
-date:   2023-02-03
+date: 2023-03-06
 description: a security analysis on the OpenPGP key exchange method Web Key Directory
 
 authors:
@@ -12,17 +12,16 @@ authors:
 
 bibliography: web-key-and-other-key-exchange-methods-for-openpgp.bib
 
-# citation: |
-#   bibtex entry here
-
 toc:
-  - name: "In a nutshell: Web Key Directory"
-  - name: Key Discovery Protocol
-  - name: Update Protocol
+  - name: "In a Nutshell: Web Key Directory"
+    subsections:
+    - name: Key Discovery Protocol
+    - name: Update Protocol
   - name: Security Analysis
-  - name: Update Protocol Main Assumption
-  - name: Implementation Errors and Faults
-  - name: Attack on the Update Protocol Implementation
+    subsections:
+    - name: Update Protocol Main Assumption
+    - name: Implementation Errors and Faults
+    - name: Attack on the Update Protocol Implementation
   - name: Conclusion
 ---
 
@@ -69,7 +68,7 @@ Trusting exchanged keys over this method, therefore, implies trusting in TLS and
 
 
 
-## In a nutshell: Web Key Directory
+## In a Nutshell: Web Key Directory
 Web Key Directory (WKD) <d-cite key="koch-openpgp-webkey-service-14"/> is an IETF Internet Draft which consists of two protocols, which will be briefly described here before presenting the results of the security analysis:
 
   1. The Key Discovery Protocol can be used to discover and receive OpenPGP keys published via the Web Key Directory.
