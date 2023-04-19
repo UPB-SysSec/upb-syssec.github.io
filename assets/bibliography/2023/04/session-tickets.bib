@@ -1,0 +1,169 @@
+@InProceedings{sessiontickets2023,
+  author    = {Sven Hebrok and Simon Nachtigall and Marcel Maehren and Nurullah Erinola and Robert Merget and Juraj Somorovsky and Jörg Schwenk},
+  title     = {We Really Need to Talk About Session Tickets: A Large-Scale Analysis of Cryptographic Dangers with TLS Session Tickets},
+  booktitle = {Proceedings of the 32nd USENIX Security Symposium (USENIX Security '23)},
+  year      = {2023},
+  url = {https://www.usenix.org/conference/usenixsecurity23/presentation/hebrok},
+}
+
+@online{ValsordaBlogPost,
+    author = {Filippo Valsorda},
+    title = {We need to talk about Session Tickets},
+    url  = {https://blog.filippo.io/we-need-to-talk-about-session-tickets},
+    urldate={\today},
+    year={2017},
+    month={September},
+    day={28},
+}
+
+@misc{rfc5077,
+  author="J. Salowey and H. Zhou and P. Eronen and H. Tschofenig",
+  title="Transport Layer Security (TLS) Session Resumption without Server-Side State",
+  howpublished="RFC 5077 (Proposed Standard)",
+  series="Internet Request for Comments",
+  type="RFC",
+  number="5077",
+  year=2008,
+  month=jan,
+  issn="2070-1721",
+  publisher="RFC Editor",
+  institution="RFC Editor",
+  organization="RFC Editor",
+  address="Fremont, CA, USA",
+url="https://www.rfc-editor.org/rfc/rfc5077.txt",
+  key="RFC 5077",
+  abstract={This document describes a mechanism that enables the Transport Layer Security (TLS) server to resume sessions and avoid keeping per-client session state.  The TLS server encapsulates the session state into a ticket and forwards it to the client.  The client can subsequently resume a session using the obtained ticket.  This document obsoletes RFC 4507. [STANDARDS-TRACK]},
+  keywords="",
+  doi="10.17487/RFC5077",
+}
+
+@misc{rfc4507,
+  author="J. Salowey and H. Zhou and P. Eronen and H. Tschofenig",
+  title="{Transport Layer Security (TLS) Session Resumption without Server-Side State}",
+  howpublished="RFC 4507 (Proposed Standard)",
+  series="Internet Request for Comments",
+  type="RFC",
+  number="4507",
+  year=2006,
+  month=may,
+  issn="2070-1721",
+  publisher="RFC Editor",
+  institution="RFC Editor",
+  organization="RFC Editor",
+  address="Fremont, CA, USA",
+url="https://www.rfc-editor.org/rfc/rfc4507.txt",
+  key="RFC 4507",
+  abstract={This document describes a mechanism that enables the Transport Layer Security (TLS) server to resume sessions and avoid keeping \\\%per-client session state.  The TLS server encapsulates the session state into a ticket and forwards it to the client.  The client can subsequently resume a session using the obtained ticket. [STANDARDS-TRACK]},
+  keywords="",
+  doi="10.17487/RFC4507",
+}
+
+@online{BlogCloudflareSessionResumption,
+author = {Nick Sullivan},
+title = {TLS Session Resumption: Full-speed and Secure},
+url = {https://blog.cloudflare.com/tls-session-resumption-full-speed-and-secure},
+urldate={\today},
+year={2015},
+month={February},
+day={24},
+}
+
+@online{GnuTLSBug,
+author = {Fiona Klute},
+title = {CVE-2020-13777: TLS 1.3 session resumption works without master key, allowing MITM},
+url  = {https://gitlab.com/gnutls/gnutls/-/issues/1011},
+urldate={\today},
+year={2022},
+month={June},
+day={01},
+}
+
+@online{GnuTLSBugBlog,
+author = {David Ziemann},
+title = {Analysis of the GnuTLS Session Ticket Bug (CVE-2020-13777)},
+url  = {https://www.hackmanit.de/de/blog/118-analysis-of-the-gnutls-session-ticket-bug-cve-2020-13777},
+urldate={\today},
+year={2020},
+month={July},
+day={17},
+}
+
+@inproceedings{sy2018tracking,
+author = {Sy, Erik and Burkert, Christian and Federrath, Hannes and Fischer, Mathias},
+title = {Tracking Users across the Web via TLS Session Resumption},
+year = {2018},
+isbn = {9781450365697},
+url = {https://doi.org/10.1145/3274694.3274708},
+doi = {10.1145/3274694.3274708},
+abstract = {User tracking on the Internet can come in various forms, e.g., via cookies or by fingerprinting web browsers. A technique that got less attention so far is user tracking based on TLS and specifically based on the TLS session resumption mechanism. To the best of our knowledge, we are the first that investigate the applicability of TLS session resumption for user tracking. For that, we evaluated the configuration of 48 popular browsers and one million of the most popular websites. Moreover, we present a so-called prolongation attack, which allows extending the tracking period beyond the lifetime of the session resumption mechanism. To show that under the observed browser configurations tracking via TLS session resumptions is feasible, we also looked into DNS data to understand the longest consecutive tracking period for a user by a particular website. Our results indicate that with the standard setting of the session resumption lifetime in many current browsers, the average user can be tracked for up to eight days. With a session resumption lifetime of seven days, as recommended upper limit in the draft for TLS version 1.3, 65% of all users in our dataset can be tracked permanently.},
+booktitle = {Proceedings of the 34th Annual Computer Security Applications Conference},
+keywords = {Session IDs, Session Tickets, PSK Identity, Tracking Period, Browser Measurement},
+series = {ACSAC}
+}
+
+@inproceedings{TlsShortCuts,
+author = {Springall, Drew and Durumeric, Zakir and Halderman, J. Alex},
+title = {Measuring the Security Harm of TLS Crypto Shortcuts},
+year = {2016},
+isbn = {9781450345262},
+url = {https://doi.org/10.1145/2987443.2987480},
+doi = {10.1145/2987443.2987480},
+abstract = {TLS has the potential to provide strong protection against network-based attackers and mass surveillance, but many implementations take security shortcuts in order to reduce the costs of cryptographic computations and network round trips. We report the results of a nine-week study that measures the use and security impact of these shortcuts for HTTPS sites among Alexa Top Million domains. We find widespread deployment of DHE and ECDHE private value reuse, TLS session resumption, and TLS session tickets. These practices greatly reduce the protection afforded by forward secrecy: connections to 38% of Top Million HTTPS sites are vulnerable to decryption if the server is compromised up to 24 hours later, and 10% up to 30 days later, regardless of the selected cipher suite. We also investigate the practice of TLS secrets and session state being shared across domains, finding that in some cases, the theft of a single secret value can compromise connections to tens of thousands of sites. These results suggest that site operators need to better understand the tradeoffs between optimizing TLS performance and providing strong security, particularly when faced with nation-state attackers with a history of aggressive, large-scale surveillance.},
+booktitle = {Proceedings of the 2016 Internet Measurement Conference},
+keywords = {ssl, tls, nsa, session resumption, government surveillance, nation state attacker, transport layer security, edward snowden, secure socket layer, gchq},
+location = {Santa Monica, California, USA},
+series = {IMC}
+}
+
+@inproceedings{LePochat2019,
+   author = "Le Pochat, Victor and Van Goethem, Tom and Tajalizadehkhoob, Samaneh and Korczy\'nski, Maciej and Joosen, Wouter",
+    title = "Tranco: A Research-Oriented Top Sites Ranking Hardened Against Manipulation",
+booktitle = {Proceedings of the 26th Annual Network and Distributed System Security Symposium},
+   series = {NDSS 2019},
+     year = 2019,
+    month = feb,
+      doi = {10.14722/ndss.2019.23386},
+      url = {https://doi.org/10.14722/ndss.2019.23386},
+}
+
+@inproceedings{USS:180213,
+	author = {Nadia Heninger and Zakir Durumeric and Eric Wustrow and J. Alex Halderman},
+	title = {Mining Your Ps and Qs: Detection of Widespread Weak Keys in Network Devices},
+	booktitle = {21st USENIX Security Symposium (USENIX Security)},
+	year = {2012},
+	url = {https://www.usenix.org/conference/usenixsecurity12/technical-sessions/presentation/heninger},
+}
+
+
+@InProceedings{USENIX:SNSKFKM16,
+  author =       "Petr Svenda and
+                  Mat{\'u}s Nemec and
+                  Peter Sekan and
+                  Rudolf Kvasnovsk{\'y} and
+                  David Form{\'a}nek and
+                  David Kom{\'a}rek and
+                  Vashek Maty{\'a}s",
+  title =        "The Million-Key Question - Investigating the Origins of RSA Public Keys",
+  pages =        "893--910",
+	booktitle = {25th USENIX Security Symposium (USENIX Security)},
+  year =         2016,
+  url = {https://www.usenix.org/conference/usenixsecurity16/technical-sessions/presentation/svenda},
+}
+
+@online{amazon_aws_issue,
+    title={Resolved: Application Load Balancer Session Ticket Issue},
+    url={https://aws.amazon.com/security/security-bulletins/AWS-2021-002/},
+    author={Amazon},
+    year={2021},
+    month={Apr}
+}
+
+@phdthesis{nachtigallEvaluationTLSSession2021,
+  title = {Evaluation of TLS Session Tickets},
+  author = {Nachtigall, Simon},
+  year = {2021},
+  address = {Paderborn},
+  langid = {english},
+  school = {Universit\"atsbibliothek},
+  url={https://d-nb.info/127121606X},
+}
