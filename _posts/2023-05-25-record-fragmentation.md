@@ -10,36 +10,6 @@ authors:
         name: Paderborn University
     url: https://twitter.com/JonSnowWhite2
     bibtex: Niere, Niklas
-#   - name: Simon Nachtigall
-#     affiliations:
-#         name: Paderborn University and achelos GmbH
-#     url: https://twitter.com/snachti
-#     bibtex: Nachtigall, Simon
-#   - name: Marcel Maehren
-#     affiliations:
-#         name: Ruhr University Bochum
-#     url: https://twitter.com/marcelmaehren
-#     bibtex: Maehren, Marcel
-#   - name: Nurullah Erinola
-#     affiliations:
-#         name: Ruhr University Bochum
-#     url: https://twitter.com/nerinola1
-#     bibtex: Erinola, Nurullah
-#   - name:  Robert Merget
-#     affiliations:
-#         name: Technology Innovation Institute and Ruhr University Bochum
-#     url: https://twitter.com/ic0nz1
-#     bibtex: Merget, Robert
-#   - name: Juraj Somorovsky
-#     affiliations:
-#         name: Paderborn University
-#     url: https://twitter.com/jurajsomorovsky
-#     bibtex: Somorovsky, Juraj
-#   - name: Jörg Schwenk
-#     affiliations:
-#         name: Ruhr University Bochum
-#     url: https://twitter.com/JoergSchwenk
-#     bibtex: Schwenk, Jörg
 
 bibliography: record_frag.bib
 
@@ -97,21 +67,24 @@ toc:
 TCP fragmentation has long been known as a viable deep packet inspection (DPI) circumvention technique.
 However, censors are increasingly aware of this technique.
 We propose TLS record fragmentation as a new censorship circumvention technique on the TLS layer that functions analogously to TCP fragmentation.
-Using TLS record fragmentation, we successfully circumvented the DPI of China's firewall.
+Using TLS record fragmentation, we successfully circumvented the DPI of the Great Firewall of China (GFW).
 We also found that over 90% of TLS servers support this new circumvention technique.
 To contextualize TLS record fragmentation for future work, we discuss its possibilities and limitations.
 
- > 0x1703030005436972637517030300056d76656e74170303
- > 0005696e67207417030300056865204746170303000157
+> ```
+> 0x1703030005436972637517030300056d76656e74170303
+>   0005696e67207417030300056865204746170303000157
+> ```
 
 
 ---
 
-## Introduction 
+## Introduction
 
 In this section, we provide background information on TLS censorship and fragmentation before showing the viability of TLS record fragmentation in later sections.
 
 ### TLS (Censorship)
+
 The TLS protocol provides confidentiality, authenticity, and integrity to internet traffic in a client&#8209;server setting&nbsp;<d-cite key="tls12,tls13"/>.
 While TLS can encrypt arbitrary application data, it is prominently used to encrypt HTTP connections.
 Google Chrome reports that Chrome serves around 93% of its connections over HTTPS (HTTP+TLS)&nbsp;<d-cite key="chrome_https"/>.
@@ -123,7 +96,8 @@ The handshake is depicted below.
 ![A TLS 1.2 handshake with an HTTP GET request.](/assets/img/2023/06/record-frag/handshake-light.svg){: width="70%" style="margin: 0 auto" .light-only}
 ![(Dark mode image - for description see light mode image)](/assets/img/2023/06/record-frag/handshake-dark.svg){: width="70%" style="margin: 0 auto" .dark-only}
 <div class="caption">
-A TLS 1.2 handshake. Unencrypted messages are marked in blue while encrypted messages are marked in yellow. The SNI extension is visible in the unencrypted ClientHello message while the Host header of the HTTP GET request is encrypted.
+A TLS 1.2 handshake. Unencrypted messages are marked in blue while encrypted messages are marked in yellow.
+The SNI extension is visible in the unencrypted ClientHello message while the Host header of the HTTP GET request is encrypted.
 </div>
 
 Censors around the globe utilize the SNI extension to facilitate the censorship of HTTPS connections&nbsp;<d-cite key="russia_sni_throttling,sni_china,sni_india,sni_south_korea"/>. 
@@ -145,14 +119,16 @@ The latter is called TCP fragmentation and is depicted below with an HTTP GET me
 ![TCP fragmented HTTP GET request.](/assets/img/2023/06/record-frag/tcp_frag-light.svg){: width="80%" style="margin: 0 auto" .light-only}
 ![(Dark mode image - for description see light mode image)](/assets/img/2023/06/record-frag/tcp_frag-dark.svg){: width="80%" style="margin: 0 auto" .dark-only}
 <div class="caption">
-The left side contains an unfragmented HTTP GET request. The same request is depicted in two TCP segments on the right side. Censors that want to extract the hostname of the website from the fragmented HTTP GET request have to concatenate both fragments.
+The left side contains an unfragmented HTTP GET request.
+The same request is depicted in two TCP segments on the right side.
+Censors that want to extract the hostname of the website from the fragmented HTTP GET request have to concatenate both fragments.
 </div>
 
 
 Interestingly, TCP fragmentation can be used in censorship circumvention as it aggravates the complexity of traffic analysis.
 In the above example, a censor has to concatenate both TCP fragments to correctly identify the destination of the GET request.
 This effectively forces the censor to maintain a state and allocate costly memory for every connection it analyzes.
-The costs of analyzing TCP fragmentation caused many censors to ignore it in the past  &nbsp;<d-cite key="geneva,liberate,throttling_twitter,india_sni"/>.
+The costs of analyzing TCP fragmentation caused many censors to ignore it in the past&nbsp;<d-cite key="geneva,liberate,throttling_twitter,india_sni"/>.
 As it proved successful, TCP fragmentation was implemented in various censorship circumvention tools&nbsp;<d-cite key="goodbyedpi,zapret,powertunnel,greentunnel"/>.
 Recently, though, China's censor has become more sophisticated and begun handling TCP fragmentation&nbsp;<d-cite key="geneva"/>.
 
@@ -167,7 +143,9 @@ This is depicted in the figure below.
 ![TLS Record fragmented ClientHello message.](/assets/img/2023/06/record-frag/record_frag-light.svg){: width="80%" style="margin: 0 auto" .light-only}
 ![TLS Record fragmented ClientHello message.](/assets/img/2023/06/record-frag/record_frag-dark.svg){: width="80%" style="margin: 0 auto" .dark-only}
 <div class="caption">
-The left side depicts a TLS ClientHello message in a complete TLS record and TCP segment. A TLS record fragmented ClientHello message is depicted on the right. Both TLS records are contained in the same TCP segment. A censor that wants to analyze the SNI extension of the fragmented TLS message has to concatenate both TLS records.
+The left side depicts a TLS ClientHello message in a complete TLS record and TCP segment.
+A TLS record fragmented ClientHello message is depicted on the right. Both TLS records are contained in the same TCP segment.
+A censor that wants to analyze the SNI extension of the fragmented TLS message has to concatenate both TLS records.
 </div>
 
 In this example, the SNI extension is split across different TLS records.
@@ -177,8 +155,10 @@ We are not aware of any analyses or implementations of TLS record fragmentation 
 In this blog post, we bridge this gulf and effectively rediscover TLS record fragmentation as a viable censorship circumvention technique.
 
 ## Contributions
+
 Our primary contribution is circumventing China's censor&#8212;The Great Firewall of China (GFW)&#8212;with TLS record fragmentation.
 To infer the feasibility of TLS record fragmentation on the internet, we also measured its support by TLS servers.
+
 ### Proof Of Concept
 
 As mentioned, we circumvented the GFW with TLS record fragmentation.
@@ -193,11 +173,14 @@ The figure below visualizes both our setup and the behavior of the GFW.
   <img src="/assets/img/2023/06/record-frag/setup-dark.svg" class="dark-only" alt="Setup and censor handling of two test vectors.">
 </div>
 <div class="caption">
-This figure depicts the setup of our scans for two test vectors. We can see that the GFW intercepts unfragmented TLS ClientHello messages. It ignores TLS record fragmented TLS ClientHello messages. We omitted HTTP CONNECT messages sent to DPYProxy and the HTTP Proxy for improved readability.
+This figure depicts the setup of our scans for two test vectors.
+We can see that the GFW intercepts unfragmented TLS ClientHello messages.
+It ignores TLS record fragmented TLS ClientHello messages.
+We omitted HTTP CONNECT messages sent to DPYProxy and the HTTP Proxy for improved readability.
 </div>
 
 We set up DPYProxy on a vantage point in China (AS4837) and let it connect to an HTTP proxy in the [DFN](https://www.dfn.de/en/).
-From there, we queried [https://wikipedia.org/wiki/turtle](https://wikipedia.org/wiki/turtle) using curl<d-footnote>curl -Ls --proxy 127.0.0.1:4433 https://wikipedia.org/wiki/turtle </d-footnote> with different settings of our DPYProxy.
+From there, we queried [https://wikipedia.org/wiki/turtle](https://wikipedia.org/wiki/turtle) using curl<d-footnote><code>curl -Ls --proxy 127.0.0.1:4433 https://wikipedia.org/wiki/turtle</code></d-footnote> with different settings of our DPYProxy.
 Specifically, we ran DPYProxy with any combination of TCP and TLS record fragmentation enabled.
 When combining TCP and TLS record fragmentation, we fit one TLS record into exactly one TCP segment.
 In all tests, we fragmented the ClientHello message before and after the SNI extension.
@@ -259,15 +242,22 @@ Overall, we detect that the GFW handles TCP fragmentation partially but is overc
 ### TLS Server Support
 
 To assess the usability of TLS record fragmentation, we also measured TLS servers' support for it.
-To this end, we analyzed the domains of the [Tranco Top 1M list](https://tranco-list.eu/) and all https:// domains from the [global list of censored domains by the CitizenLab](https://github.com/citizenlab/test-lists/blob/master/lists/global.csv).
+To this end, we analyzed the domains of the [Tranco Top 1M list](https://tranco-list.eu/) and all `https://` domains from the [global list of censored domains by the CitizenLab](https://github.com/citizenlab/test-lists/blob/master/lists/global.csv).
 We provide the per-server results of our analysis on [GitHub](https://github.com/UPB-SysSec/TlsRecordFragmentationResults).
 Below, we summarize our results.
+
+<style>
+.footnote-ref {color: var(--global-theme-color) !important; border-bottom: none; text-decoration: none;}
+.distill-fn-style li{color: var(--global-distill-app-color) !important; font-size: 0.8em; line-height: 1.7em;}
+.distill-fn-style a{color: var(--global-distill-app-color) !important; border-bottom: none; text-decoration: none;}
+.distill-fn-style a:hover{color: var(--global-hover-color) !important; border-bottom: none; text-decoration: none;}
+</style>
 
 <table width="70%" style="margin: 0 auto; text-align:center">
 <thead>
 <tr class="header">
 <th style="text-align: left;"><span>List</span></th>
-<th style="text-align: right;"><span>Scanned<br>Domains</span><d-footnote>We excluded domains that are not resolvable, do not handshake TLS, or requested exclusion from our scans in a previous scan.</d-footnote></th>
+<th style="text-align: right;"><span>Scanned<br>Domains</span><sup><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref">a</a></sup></th>
 <th style="text-align: right;"><span>Support TLS<br>record fragmentation</span></th>
 </tr>
 </thead>
@@ -285,12 +275,16 @@ Below, we summarize our results.
 </tbody>
 </table><br>
 
+<ol class="distill-fn-style" type="a">
+<li id="fn1">We excluded domains that are not resolvable, do not handshake TLS, or requested exclusion from our scans in a previous scan.<a href="#fnref1" class="footnote-backlink" role="doc-backlink">[↩︎]</a></li>
+</ol>
+
 
 We found that slightly over 96% of domains from the CitizenLab list support TLS record fragmentation.
 In comparison, the domains from the Tranco Top 1M list support TLS record fragmentation with a slightly smaller share of over 92%.
 Interestingly, TLS record fragmentation enjoys widespread support across all ranks of the Tranco Top 1M list as can be seen below.
 
-![TLS server suport for TLS record fragmentation by Tranco rank.](/assets/img/2023/06/record-frag/record_frag_by_tranco_rank.svg){:width="70%" style="display: block; margin: 0 auto"}
+![TLS server support for TLS record fragmentation by Tranco rank.](/assets/img/2023/06/record-frag/record_frag_by_tranco_rank.svg){:width="70%" style="display: block; margin: 0 auto"}
 
 
 Overall, we determined that TLS record fragmentation is largely supported by TLS servers as of today.
