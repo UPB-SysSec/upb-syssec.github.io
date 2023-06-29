@@ -1,7 +1,7 @@
 ---
 layout: distill
 title: "Circumventing the GFW with TLS Record Fragmentation"
-date: 2023-05-25
+date: 2023-06-27
 description: "How Fragmentation Can Be Extended to the TLS Layer"
 
 authors:
@@ -35,14 +35,15 @@ toc:
 
 <!-- Add possibility to only display some elements in light or dark mode. Using invert does not play nicely with colors in an svg -->
 <style>
-    .light-only, .dark-only {
+    .light-only {
+        display: block;
+    }
+    .dark-only {
+        display: block;
+    }
+    html[data-theme="dark"] .light-only,
+    html:not([data-theme="dark"]) .dark-only{
         display: none;
-    }
-    html[data-theme="light"] .light-only {
-        display: block;
-    }
-    html[data-theme="dark"] .dark-only {
-        display: block;
     }
     d-footnote-list img {
         height: 1.5em;
