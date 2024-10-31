@@ -3,6 +3,7 @@ layout: distill
 title: "Bachelor's Thesis: Web Key Directory and Other Key Exchange Methods for OpenPGP"
 date: 2023-03-06
 description: a security analysis on the OpenPGP key exchange method Web Key Directory
+citation: true
 
 authors:
   - name: Philipp Michael Breuch

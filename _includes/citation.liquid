@@ -1,0 +1,17 @@
+<br>
+<hr>
+<br>
+
+If you found this useful, please cite this as:
+
+{% capture citation_code -%}
+```
+@online{ {{- page.title | slugify: "latin" -}} ,
+  author = { {%- for author in page.authors -%}{{ author.bibtex }}{% if forloop.last == false %} and {% endif %}{%- endfor -%} },
+  title = { {{- page.title -}} },
+  year = {{ page.date | date: '%Y' }},
+  url = { {{- site.url -}}{{- page.url -}} },
+  urldate = { {{- site.time | date: '%Y-%m-%d' -}} }
+```
+{%- endcapture %}
+{{ citation_code | markdownify }}

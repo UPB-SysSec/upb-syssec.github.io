@@ -3,6 +3,7 @@ layout: distill
 title: "Circumventing the GFW with TLS Record Fragmentation"
 date: 2023-06-27
 description: "How Fragmentation Can Be Extended to the TLS Layer"
+citation: true
 
 authors:
   - name: Niklas Niere
