@@ -64,14 +64,10 @@ toc:
 
 <!-- Add possibility to only display some elements in light or dark mode. Using invert does not play nicely with colors in an svg -->
 <style>
-    .light-only, .dark-only {
+    /* hide light only when in dark mode, hide dark in any other mode (on initial page view, the attribute might not be set to light properly...) */
+    html[data-theme="dark"] .light-only,
+    html:not([data-theme="dark"]) .dark-only{
         display: none;
-    }
-    html[data-theme="light"] .light-only {
-        display: initial;
-    }
-    html[data-theme="dark"] .dark-only {
-        display: initial;
     }
     d-footnote-list img {
         height: 1.5em;

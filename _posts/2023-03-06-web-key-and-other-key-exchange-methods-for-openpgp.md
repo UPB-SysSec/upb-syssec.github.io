@@ -9,7 +9,7 @@ authors:
   - name: Philipp Michael Breuch
     affiliations:
         name: Paderborn University
-    bibtex: Breuch, P.M.
+    bibtex: Breuch, Philipp Michael
 
 bibliography: web-key-and-other-key-exchange-methods-for-openpgp.bib
 
