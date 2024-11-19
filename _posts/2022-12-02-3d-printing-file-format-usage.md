@@ -3,6 +3,7 @@ layout: distill
 title: Usage Statistics of 3D Printing File Formats
 description: an overview of the usage of different file formats used for 3D printing
 date: 2022-12-02
+citation: true
 
 authors:
   - name: Jost Rossel

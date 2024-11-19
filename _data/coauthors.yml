@@ -9,3 +9,19 @@
 "Hebrok":
   - firstname: ["Sven", "S.", "Sven Niclas", "S. N."]
     url: https://www.uni-paderborn.de/en/person/55616
+
+"Niere":
+  - firstname: ["Niklas", "N."]
+    url: https://www.uni-paderborn.de/person/63563
+
+"Lange":
+  - firstname: ["Felix", "F."]
+    url: https://www.uni-paderborn.de/person/67893
+
+"Heitmann":
+  - firstname: ["Nico", "N."]
+    url: https://www.uni-paderborn.de/person/74619
+
+"Radoy":
+  - firstname: ["Maximilian", "R."]
+    url: https://www.uni-paderborn.de/person/68826

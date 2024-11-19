@@ -3,6 +3,7 @@ layout: distill
 title: "We Really Need to Talk About Session Tickets"
 date: 2023-04-19
 description: "A Large-Scale Analysis of Cryptographic Dangers with TLS Session Tickets"
+citation: true
 
 authors:
   - name: Sven Hebrok
