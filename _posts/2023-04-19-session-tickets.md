@@ -8,7 +8,7 @@ citation: true
 authors:
   - name: Sven Hebrok
     affiliations:
-        name: Paderborn University
+      name: Paderborn University
     url: https://twitter.com/xoimex
     bibtex: Hebrok, Sven
 #   - name: Simon Nachtigall
@@ -45,21 +45,20 @@ authors:
 bibliography: 2023/04/session-tickets.bib
 
 toc:
-    - name: What are Session Tickets?
-      subsections:
-        - name: Issues with Session Tickets
-    - name: Scanning the Web
-      subsections:
-        - name: First Findings
-          subsections:
-            - name: AWS
-            - name: Stackpath
-        - name: Further Weak STEKs
-    - name: Impact
-    - name: Takeaways
-      subsections:
-        - name: Further Results
-
+  - name: What are Session Tickets?
+    subsections:
+      - name: Issues with Session Tickets
+  - name: Scanning the Web
+    subsections:
+      - name: First Findings
+        subsections:
+          - name: AWS
+          - name: Stackpath
+      - name: Further Weak STEKs
+  - name: Impact
+  - name: Takeaways
+    subsections:
+      - name: Further Results
 ---
 
 <!-- Add possibility to only display some elements in light or dark mode. Using invert does not play nicely with colors in an svg -->
@@ -96,6 +95,7 @@ In this post, we give a brief overview of the paper and our results.
 
 ![Absract representation of a TLS 1.2 handshake and session resumption.](/assets/img/2023/04/session-tickets/handshake.drawio.svg){:width="100%" .light-only}
 ![(Dark mode image - for description see light mode image)](/assets/img/2023/04/session-tickets/handshake.dark.svg){:width="100%" .dark-only}
+
 <div class="caption">
 (Left) A TLS 1.2<d-footnote>TLS 1.0 and TLS 1.1 behave the same way. For simplicity, we write TLS 1.2.</d-footnote> handshake with a DH key exchange. Here the server issues a ticket containing key material for the second handshake.
 
@@ -197,24 +197,23 @@ We scanned hosts from the Tranco List&nbsp;<d-cite key="LePochat2019"/> as well 
 We performed three sets of scans:
 
 1. **pre&#8209;T1M** and **T1M**:
-Our first scan of the Tranco top 1M was performed in May 2021 during the master thesis of Simon Nachtigall<d-cite key="nachtigallEvaluationTLSSession2021"/>.
-We only scanned for keys consisting exclusively of zero bytes in TLS 1.2 and 1.3.
-<br/>
-Before performing the final T1M scan, we performed several test scans, summarized as the **pre&#8209;T1M** scan.
+   Our first scan of the Tranco top 1M was performed in May 2021 during the master thesis of Simon Nachtigall<d-cite key="nachtigallEvaluationTLSSession2021"/>.
+   We only scanned for keys consisting exclusively of zero bytes in TLS 1.2 and 1.3.
+   <br/>
+   Before performing the final T1M scan, we performed several test scans, summarized as the **pre&#8209;T1M** scan.
 
 1. **T100k** and **IP100k**
-We performed two smaller but more detailed scans of 100k hosts each in April 2022.
-These were chosen as the top 100k from the Tranco list and 100k random IPv4 hosts that responded on port 443.
-For these, we also performed further tests not covered in this post.
+   We performed two smaller but more detailed scans of 100k hosts each in April 2022.
+   These were chosen as the top 100k from the Tranco list and 100k random IPv4 hosts that responded on port 443.
+   For these, we also performed further tests not covered in this post.
 
 1. **IPF**
-Last, we scanned the entire IPv4 address range in August 2022.
-To this end, we only collected session tickets and performed the tests afterward without having to contact the servers again.
-We performed three TLS connections per host using ZGrab2, each time attempting to obtain a session ticket.
-We chose this number as it reduces the number of connections while hopefully still managing to connect to different servers if there is a load balancer.
+   Last, we scanned the entire IPv4 address range in August 2022.
+   To this end, we only collected session tickets and performed the tests afterward without having to contact the servers again.
+   We performed three TLS connections per host using ZGrab2, each time attempting to obtain a session ticket.
+   We chose this number as it reduces the number of connections while hopefully still managing to connect to different servers if there is a load balancer.
 
 ### First Findings
-
 
 <table>
 <thead>
@@ -269,7 +268,6 @@ style="text-align: center;"><strong>Authentication</strong></th>
 </tbody>
 </table>
 
-
 Unexpectedly, the pre-T1M scan directly uncovered many servers using an all-zero STEK.
 In the pre-T1M scan, we scanned the Tranco top 100k hosts multiple times.
 Summed up over all scans, we found 1923 (**1.9%**) distinct servers using an all-zero STEK.
@@ -285,7 +283,6 @@ The issue was promptly resolved<d-cite key="amazon_aws_issue"/>.
 
 We could see that the hosts were not vulnerable at all times but only in some time intervals.
 This suggested an error in the key rotation, which was later confirmed to us by AWS developers.
-
 
 #### Stackpath
 
@@ -303,7 +300,6 @@ We identified that on vulnerable hosts, on average 1.4% of the issued tickets pe
 Stackpath did not give us any insight into how this came to be but resolved the issue.
 
 ### Further Weak STEKs
-
 
 <style>
 .footnote-ref {color: var(--global-theme-color) !important; border-bottom: none; text-decoration: none;}
@@ -439,7 +435,6 @@ style="text-align: center;"><strong>Authentication</strong></th>
 </ol>
 </div>
 
-
 During the T1M scan, after AWS and Stackpath have resolved the issue, we found three further hosts using an all-zero key for both encryption and HMAC.
 These hosts used AES-128-CBC with HMAC-SHA256 and supported TLS 1.2.
 One of these hosts also supported TLS 1.3, also using zero-keys for session tickets.
@@ -487,7 +482,6 @@ Since these keys cannot be audited externally, we argue that libraries should st
 
 In public key cryptosystems, it is already common practice to ensure that the generated key material is of a specific form, for example, to ensure that the key material will result in a strong key or as a safety net for failing random number generators. Adding additional checks to randomly drawn symmetric keys could, at least to some extent, ensure that accidentally weak key material does not break the protocol.
 
-
 ### Further Results
 
 In our paper, we have seen a single case of a reused nonce.
@@ -500,6 +494,7 @@ We also present the analysis of open-source implementations and their usage of s
 See our preprint for more details:
 
 {::options parse_block_html="true" /}
+
 <div style="text-align: center;">
 [**We Really Need to Talk About Session Tickets:<br/>A Large-Scale Analysis of Cryptographic Dangers with TLS Session Tickets**][paper]
 <br/>
@@ -512,6 +507,5 @@ See our preprint for more details:
 [Juraj Somorovsky](https://twitter.com/jurajsomorovsky),
 [Jörg Schwenk](https://twitter.com/JoergSchwenk)
 </div>
-
 
 [paper]: https://www.usenix.org/conference/usenixsecurity23/presentation/hebrok

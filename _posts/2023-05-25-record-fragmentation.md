@@ -8,30 +8,29 @@ citation: true
 authors:
   - name: Niklas Niere
     affiliations:
-        name: Paderborn University
+      name: Paderborn University
     url: https://twitter.com/JonSnowWhite2
     bibtex: Niere, Niklas
 
 bibliography: record_frag.bib
 
 toc:
-    - name: Introduction
-      subsections: 
-        - name: TLS (Censorship)
-        - name: TCP Fragmentation
-        - name: TLS Record Fragmentation
-    - name: Contributions
-      subsections:
+  - name: Introduction
+    subsections:
+      - name: TLS (Censorship)
+      - name: TCP Fragmentation
+      - name: TLS Record Fragmentation
+  - name: Contributions
+    subsections:
       - name: Proof of Concept
       - name: TLS Server Support
-    - name: Discussion
-      subsections:
-        # - name: How Can You Manipulate the TLS Handshake with a Proxy?
-        # - name: How Long Will This Work...
-        # - name: Can’t the GFW Block TLS Record Fragmentation Completely?
-        # - name: I Want To Add TLS Record Fragmentation to my DPI Circumvention Tool. What Do I Have to Consider?
-    - name: Conclusion
-
+  - name: Discussion
+    subsections:
+      # - name: How Can You Manipulate the TLS Handshake with a Proxy?
+      # - name: How Long Will This Work...
+      # - name: Can’t the GFW Block TLS Record Fragmentation Completely?
+      # - name: I Want To Add TLS Record Fragmentation to my DPI Circumvention Tool. What Do I Have to Consider?
+  - name: Conclusion
 ---
 
 <!-- Add possibility to only display some elements in light or dark mode. Using invert does not play nicely with colors in an svg -->
@@ -78,7 +77,6 @@ To contextualize TLS record fragmentation for future work, we discuss its possib
 >   0005696e67207417030300056865204746170303000157
 > ```
 
-
 ---
 
 ## Introduction
@@ -97,19 +95,19 @@ The handshake is depicted below.
 
 ![A TLS 1.2 handshake with an HTTP GET request.](/assets/img/2023/06/record-frag/handshake-light.svg){: width="70%" style="margin: 0 auto" .light-only}
 ![(Dark mode image - for description see light mode image)](/assets/img/2023/06/record-frag/handshake-dark.svg){: width="70%" style="margin: 0 auto" .dark-only}
+
 <div class="caption">
 A TLS 1.2 handshake. Unencrypted messages are marked in blue while encrypted messages are marked in yellow.
 The SNI extension is visible in the unencrypted ClientHello message while the Host header of the HTTP GET request is encrypted.
 </div>
 
-Censors around the globe utilize the SNI extension to facilitate the censorship of HTTPS connections&nbsp;<d-cite key="russia_sni_throttling,sni_china,sni_india,sni_south_korea"/>. 
+Censors around the globe utilize the SNI extension to facilitate the censorship of HTTPS connections&nbsp;<d-cite key="russia_sni_throttling,sni_china,sni_india,sni_south_korea"/>.
 As a countermeasure, the IETF has proposed ESNI and ECH&nbsp;<d-cite key="ietf-tls-esni-16"/>.
 Both encrypt the SNI extension in the ClientHello message.
 Unfortunately, the standard is still in the drafting phase, and its adoption is far from widespread&nbsp;<d-cite key="sni_china"/>.
 The only website for which we could find a valid [ECH configuration](https://dns.google/query?name=crypto.cloudflare.com&rr_type=HTTPS&ecs=) is Cloudflare's designated testing server.
 The slow adoption of ECH necessitates intermediate solutions for SNI censorship circumvention.
 One such solution is the fragmentation of TLS messages across multiple TCP fragments, known as TCP fragmentation.
-
 
 ### TCP Fragmentation
 
@@ -120,12 +118,12 @@ The latter is called TCP fragmentation and is depicted below with an HTTP GET me
 
 ![TCP fragmented HTTP GET request.](/assets/img/2023/06/record-frag/tcp_frag-light.svg){: width="80%" style="margin: 0 auto" .light-only}
 ![(Dark mode image - for description see light mode image)](/assets/img/2023/06/record-frag/tcp_frag-dark.svg){: width="80%" style="margin: 0 auto" .dark-only}
+
 <div class="caption">
 The left side contains an unfragmented HTTP GET request.
 The same request is depicted in two TCP segments on the right side.
 Censors that want to extract the hostname of the website from the fragmented HTTP GET request have to concatenate both fragments.
 </div>
-
 
 Interestingly, TCP fragmentation can be used in censorship circumvention as it aggravates the complexity of traffic analysis.
 In the above example, a censor has to concatenate both TCP fragments to correctly identify the destination of the GET request.
@@ -144,6 +142,7 @@ This is depicted in the figure below.
 
 ![TLS Record fragmented ClientHello message.](/assets/img/2023/06/record-frag/record_frag-light.svg){: width="80%" style="margin: 0 auto" .light-only}
 ![TLS Record fragmented ClientHello message.](/assets/img/2023/06/record-frag/record_frag-dark.svg){: width="80%" style="margin: 0 auto" .dark-only}
+
 <div class="caption">
 The left side depicts a TLS ClientHello message in a complete TLS record and TCP segment.
 A TLS record fragmented ClientHello message is depicted on the right. Both TLS records are contained in the same TCP segment.
@@ -281,13 +280,11 @@ Below, we summarize our results.
 <li id="fn1">We excluded domains that are not resolvable, do not handshake TLS, or requested exclusion from our scans in a previous scan.<a href="#fnref1" class="footnote-backlink" role="doc-backlink">[↩︎]</a></li>
 </ol>
 
-
 We found that slightly over 96% of domains from the CitizenLab list support TLS record fragmentation.
 In comparison, the domains from the Tranco Top 1M list support TLS record fragmentation with a slightly smaller share of over 92%.
 Interestingly, TLS record fragmentation enjoys widespread support across all ranks of the Tranco Top 1M list as can be seen below.
 
 ![TLS server support for TLS record fragmentation by Tranco rank.](/assets/img/2023/06/record-frag/record_frag_by_tranco_rank.svg){:width="70%" style="display: block; margin: 0 auto"}
-
 
 Overall, we determined that TLS record fragmentation is largely supported by TLS servers as of today.
 This holds for the top TLS servers on the internet as well as censored domains.
@@ -308,11 +305,11 @@ These are only authenticated for encrypted handshake messages and application da
 As we only manipulated the TLS record headers of unencrypted handshake messages we did not break the TLS handshake in our analyses.
 Any manipulation of other parts of the handshake such as the SNI extension would indeed break authentication.
 
-As another nitty-gritty detail: 
+As another nitty-gritty detail:
 The addition of implicit sequence numbers with the addition of additional records does not break the following authentication of data. Sequence numbers are reset before encryption starts.
 
-
 ### How Long Will TLS Record Fragmentation Stay Viable?
+
 Currently, we are not sure why TLS record fragmentation works so well on the GFW.
 We suggest that the GFW is currently only able to hold state on the TCP layer but not in its DPI of the TLS layer.
 If that is the case, we conjecture the GFW and other censors to require some time until they can reassemble TLS records as well.
@@ -322,6 +319,7 @@ In the end, we cannot definitely answer how long TLS record fragmentation will w
 We still conjecture it to be viable for a non-negligible amount of time, especially as a building block for more sophisticated circumvention techniques.
 
 ### Can't the GFW Block TLS Record Fragmentation Completely?
+
 Yes, and no.
 The GFW could completely block all fragmented TLS messages.
 Doing so risks blocking all connections that exhibit naturally occurring TLS record fragmentation.

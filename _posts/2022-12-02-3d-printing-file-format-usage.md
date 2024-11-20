@@ -35,13 +35,13 @@ The data presented here was collected in June 2021.
 
 ## How We Collected the Data
 
-Both *Thingiverse* and *MyMiniFactory* provide application programming interfaces (APIs) that allow access to their data sets, specifically JSON-based HTTP REST APIs <d-cite key="rfc8259,rfc2616,fielding2000architectural,MyMiniFactoryAPIDocumentation,thingiverse.comRESTAPIReference"/>.
+Both _Thingiverse_ and _MyMiniFactory_ provide application programming interfaces (APIs) that allow access to their data sets, specifically JSON-based HTTP REST APIs <d-cite key="rfc8259,rfc2616,fielding2000architectural,MyMiniFactoryAPIDocumentation,thingiverse.comRESTAPIReference"/>.
 In both cases, there is no API endpoint to list existing objects, but both websites use incrementing numbers to identify the objects.
 Thus, gathering a complete data set is a matter of incrementally trying every number until no more objects are found.
 This can be done for both marketplaces.
 For both marketplaces, we incremented the object IDs and attempted to download the JSON metadata for the ID.
 
-The data set for *Thingiverse* contains more than two million entries, where the set for *MyMiniFactory* amounts to roughly 130,000 entries.
+The data set for _Thingiverse_ contains more than two million entries, where the set for _MyMiniFactory_ amounts to roughly 130,000 entries.
 For each object the downloaded metadata includes the file names of all files uploaded to that object.
 To ease the analysis, we stored the uploaded file names and their upload timestamp for each object.
 Then, we reduced the file name to their suffix(es) (i.e. their file extension) and unified the them to a lower case version.
@@ -52,11 +52,11 @@ Additionally, we do not analyze the content of uploaded `.zip` (or similar) file
 ## Overview of the Data
 
 [Table 1](#tab:file-format-occurrences) lists the file formats that occur the most often in our data sets.<d-footnote>All file formats that occur more than 10,000 times. The remaining files account for 8% of all files.</d-footnote>
-*Total Occurrences* shows the sum of all files uploaded for every object.
+_Total Occurrences_ shows the sum of all files uploaded for every object.
 Multiple files of the same format can be uploaded for the same object.
 That explains why the number of STL files can exceed that of the total number of objects in the data sets by about a factor of four.
 There are more than five times as many STL files uploaded than all other file uploads combined.<d-footnote>There are 4,592,742 STL files and 787,577 other files in total.</d-footnote>
-The *Repetition Factor* indicates how many files of the same format are uploaded for the same object on average.
+The _Repetition Factor_ indicates how many files of the same format are uploaded for the same object on average.
 For each format, we only counted objects where the given file format was present at least once.
 Hence, the minimal value of the repetition factor is one.
 Most repetition values are higher than 1.5 which shows that most file formats are rarely uploaded on their own.
@@ -82,18 +82,18 @@ The repetition factor indicates how many files of this type were uploaded to a s
 | `.stl`    | STereoLithography <sup><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref">a</a></sup>                                                 |         4,592,742 |              2.13 |
 | `.scad`   | [OpenSCAD](http://openscad.org/) project file                                                                                                         |            77,585 |              1.42 |
 | `.obj`    | Wavefront Object <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>b</sup></a>                                                  |            65,556 |              1.86 |
-| `.step`   | <span>*STandard for the Exchange of Product model data* <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>c</sup></a>           |            44,920 |              1.72 |
+| `.step`   | <span>_STandard for the Exchange of Product model data_ <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>c</sup></a>           |            44,920 |              1.72 |
 | `.sldprt` | [SolidWorks](https://www.solidworks.com/) Part file                                                                                                   |            43,599 |              2.00 |
 | `.skp`    | [SketchUp](https://www.sketchup.com/) project file                                                                                                    |            32,522 |              1.48 |
 | `.f3d`    | [Fusion 360](https://www.autodesk.com/products/fusion-360) project file                                                                               |            32,275 |              1.30 |
 | `.fcstd`  | [FreeCAD](https://www.freecadweb.org/) project file                                                                                                   |            21,436 |              1.52 |
-| `.dxf`    | *Drawing Interchange File* for *AutoCAD* <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>d</sup></a>                          |            20,566 |              1.94 |
+| `.dxf`    | _Drawing Interchange File_ for _AutoCAD_ <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>d</sup></a>                          |            20,566 |              1.94 |
 | `.gcode`  | Toolpath instruction for manufacturing devices <a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>e</sup></a>                    |            16,713 |              1.52 |
 | `.ipt`    | [Inventor](https://www.autodesk.com/products/inventor) project file                                                                                   |            14,905 |              1.96 |
 | `.3mf`    | 3D Manufacturing Format <a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>f</sup></a>                                           |            14,823 |              1.63 |
 | `.blend`  | [Blender](https://www.blender.org/) project file                                                                                                      |            13,720 |              1.61 |
 | `.123dx`  | [123D](https://www.autodesk.com/solutions/123d-apps) project file <a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>g</sup></a> |            12,146 |              1.55 |
-| ︙         | ︙                                                                                                                                                     |                 ︙ |                 ︙ |
+| ︙        | ︙                                                                                                                                                    |                ︙ |                ︙ |
 | `.amf`    | Additive Manufacturing Format <a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>h</sup></a>                                     |             2,451 |              1.54 |
 
 <ol class="distill-fn-style" type="a">
@@ -107,8 +107,6 @@ The repetition factor indicates how many files of this type were uploaded to a s
 <li id="fn8">Initially proposed as “STL 2.0” by Hiller et.al. <d-cite key="hillerSTLProposalUniversal2009"/>. Since the initial proposal, it has been jointly specified by ISO &amp; ASTM <d-cite key="iso52915"/>. <a href="#fnref8" class="footnote-backlink" role="doc-backlink">[↩︎]</a></li>
 </ol>
 
-
-
 <div class="l-body-outset"><hr></div>
 
 Overall, only 3% of objects do not have an associated STL file.<d-footnote>In total about 56,000 objects.</d-footnote>
@@ -116,7 +114,6 @@ The top three file formats of objects where no STL is uploaded are `.obj`, `.sca
 Further, nine of the fifteen listed files are project files for specific programs.
 Together these facts suggest that the most common use case is for a user to upload an STL file and their project file of the software they created the STL with.
 Alternatively, the model is uploaded as an OBJ file, or in popular exchange file formats for Computer Aided Design (CAD) software (i.e. `.scad` and `.dxf`).
-
 
 ## Trend of Usage over Time
 
@@ -231,7 +228,6 @@ In the case of `.123dx` this is expected, since AutoDesk discontinued the 123D p
     })
 </script>
 
-
 ## How to Get the Data
 
 ### Option 1
@@ -239,10 +235,12 @@ In the case of `.123dx` this is expected, since AutoDesk discontinued the 123D p
 Download the data we used (collected in June 2021):
 
 - `/raw_data`
+
   - <a href="https://git.cs.uni-paderborn.de/syssec/projects/blog-assets/-/raw/main/3d-printing-file-format-usage/raw_data/thingiverse.zip?inline=false" download><code>thingiverse.zip</code></a> (5.8 GB)
   - <a href="https://git.cs.uni-paderborn.de/syssec/projects/blog-assets/-/raw/main/3d-printing-file-format-usage/raw_data/myminifactory.zip?inline=false" download><code>myminifactory.zip</code></a> (296 KB)
 
 - `/parsed_data`
+
   - <a href="https://git.cs.uni-paderborn.de/syssec/projects/blog-assets/-/raw/main/3d-printing-file-format-usage/parsed_data/extracted_data.json?inline=false" download><code>extracted_data.json</code></a> (228 MB)  
     The raw file information from both datasets.
     This is an array where each entry matches a single object in the database of either webpages.
@@ -250,7 +248,7 @@ Download the data we used (collected in June 2021):
     The single files are tuples of the file name and the upload time in UNIX format.
     `failed_opens` states how many source files failed to open (corrupted file).
     `nr_thingiverse_files` and `nr_myminifactory_files` state how many files where added from the respective database.
-  - <a href="https://git.cs.uni-paderborn.de/syssec/projects/blog-assets/-/raw/main/3d-printing-file-format-usage/parsed_data/file_analysis_raw.json?inline=false" download><code>file_analysis_raw.json</code></a> (6.7 MB)  
+  - <a href="https://git.cs.uni-paderborn.de/syssec/projects/blog-assets/-/raw/main/3d-printing-file-format-usage/parsed_data/file_analysis_raw.json?inline=false" download><code>file_analysis_raw.json</code></a> (6.7 MB)
     - `suffix_raw` all suffixes counted.
     - `suffixes_unified` all suffixes converted to lower case and counted.
     - `combinations_of_filetypes` all suffixes that contain one of the types listed in [Table 1](#tab:file-format-occurrences) counted.
@@ -272,7 +270,6 @@ Download the data we used (collected in June 2021):
   - <a href="https://git.cs.uni-paderborn.de/syssec/projects/blog-assets/-/raw/main/3d-printing-file-format-usage/scripts/extract_data.py?inline=false" download><code>extract_data.py</code></a> (2.3 KB)
   - <a href="https://git.cs.uni-paderborn.de/syssec/projects/blog-assets/-/raw/main/3d-printing-file-format-usage/scripts/get_data.py?inline=false" download><code>get_data.py</code></a> (2.6 KB)
   - <a href="https://git.cs.uni-paderborn.de/syssec/projects/blog-assets/-/raw/main/3d-printing-file-format-usage/scripts/plot_data.py?inline=false" download><code>plot_data.py</code></a> (1.5 KB)
-
 
 ### Option 2
 
