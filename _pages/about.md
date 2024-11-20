@@ -5,14 +5,14 @@ permalink: /
 subtitle: <a href='https://cs.uni-paderborn.de/en/syssec'>@Paderborn University</a>
 
 profile:
-    align: right
-    image: tessa-stealing-key.png
-    image_circular: false # crops the image to make it circular
-    more_info: >
+  align: right
+  image: tessa-stealing-key.png
+  image_circular: false # crops the image to make it circular
+  more_info: >
 
-news: false  # includes a list of news items
+news: false # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
-social: true  # includes social icons at the bottom of the page
+social: true # includes social icons at the bottom of the page
 ---
 
 Our research focuses on **system security**, **network security**, and **applied cryptography**.
