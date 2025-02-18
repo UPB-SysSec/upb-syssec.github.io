@@ -162,5 +162,5 @@ Automating bibliography management in Overleaf with Zotero simplifies collaborat
 While the Zotero API provides direct access to references, it has limitations such as entry limits and manual sub-collection selection.
 Our custom Zotero-Overleaf BibTeX Proxy overcomes these issues, offering a more flexible solution.
 
-For teams seeking an efficient, automated workflow, our proxy provides seamless integration with Overleaf
+For teams seeking an efficient, automated workflow, our proxy provides seamless integration with Overleaf.
 To get started, visit our **[GitHub repository](https://github.com/UPB-SysSec/Zotero-Overleaf-BibTeX-Proxy)**.
