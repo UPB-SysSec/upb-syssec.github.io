@@ -17,30 +17,34 @@ toc:
   - name: Utilizing Our Custom Proxy
 ---
 
+<!-- CSS snippet to make svg images with transparent background dark mode friendly.
+     Add class="wkd-dark-invert" to invert the color iff dark-theme active -->
+<style>
+    html[data-theme="dark"] img.wkd-dark-invert {
+        filter: invert(1);
+    }
+</style>
+
 If you have ever worked with LaTeX you know the struggles of manual reference management.
 To ease their struggles, many people automate reference management with a reference manager tool.
 In many cases---especially when working offline on a single-author document---a simple export to Bib(La)TeX from the reference manager of you choice is sufficient.
 But when working on the same document as a group, manual exporting references gets more cumbersome even more so when the export also has to be uploaded to a website such as Overleaf.
-
-<!-- Reiterate both problems here again, im not sure what they are exactly: is it the managed list and the automated import?-->
-Both problems can be solved in a myriad of ways. 
+Both problems---automatically syncing references with Overleaf and managing references as a group---can be solved in a myriad of ways.
 In this post, I present a few solutions that fully or partially address them.
-<!-- I think I would add this sentence to the first paragraph then everyone knows the solution when only reading the first paragraph. Here you can then be a little more detailed what you talk about in the blog post-->
 Our own solution is a Zotero group with a small proxy that allows us to access the references in Overleaf; **the proxy is available on [GitHub](https://github.com/UPB-SysSec/Zotero-Overleaf-BibTeX-Proxy)**.
 
-The solutions presented in this blog post is tailored towards the Zotero reference manager. For the rest of this blog post, I assume that the reader is familiar with the basics of LaTeX, Overleaf, and Zotero as a reference manager. 
-
-<!-- In the rest of the post you solve different steps of "the problem", I think explicitly identifiying these steps either in the abstract of a sfirst section would be very helpful. So, saying "we want a fully automated way to include a shared reference library into Overleaf. For that, we need: 1. 2. 3., we solve each step below.-->
+The solutions presented in this blog post is tailored towards the Zotero reference manager.
+For the rest of this blog post, I assume that the reader is familiar with the basics of LaTeX, Overleaf, and Zotero as a reference manager. 
 
 ## Parts of the Puzzle
 
-<!-- Reiterate the problem in this sentence -->
-There are multiple facets of the problem that can be addressed separately.
-Additionally, there are upsides and downsides to each solution, so you might chose one over the other based on your specific needs.
+![Three puzzle pieces in a row. Reading from left to right: “Manage References”, “Export BibTeX”, and “Import to Overleaf”.](/assets/img/2025/zotero-proxy/puzzle.svg){:width="70%" .wkd-dark-invert style="display: block; margin: 0 auto;"}
 
-### Working with a Group
+The problem of managing references in a group and syncing them with Overleaf can be broken down into three parts: managing references, exporting them to BibTeX, and importing them into Overleaf.
+There are multiple facets of this that can be addressed separately and all have their upsides and downsides, so you might chose one over the other based on your specific needs.
 
-<!-- This paragraph is about maintaing the same list as a group right? I think I would change the paragraph heading accordingly -->
+### Managing References in a Group
+
 The only solution we identified is by using a Zotero [group library](https://www.zotero.org/groups).
 Of course that implies that you collaborators are willing to use this, otherwise you are back to square one.
 When you get most people in a project to use Zotero, you can manually import the references from the remaining people into the library; this works especially well if the main authors use Zotero.
@@ -65,11 +69,11 @@ The most straightforward way to import a `.bib` file into Overleaf is to upload 
 We want to avoid this, its manual work after all, and automation is always worth it. [Right?](https://xkcd.com/1205/) [Right??](https://xkcd.com/1319/)<d-footnote>One could argue that with our proxy the main effort of the automation is already done.</d-footnote>
 
 <!-- alternatives to what? I assume alternatives to a manual import? -->
-Alternatives are:
+Alternatives to a manual import, anytime the references change, are
 
 - using the Overleaf Zotero integration,
 - using the Overleaf Git integration, or
-- exposing the `.bib` file via a public URL and including it as a file in Overleaf.<d-footnote>When adding files in Overleaf you can also add them from external URLs. If you want to refresh the content, Overleaf provides you with a “Refresh” button.</d-footnote>
+- exposing the `.bib` file via a public URL and including it as a file in Overleaf.<d-footnote>When adding files in Overleaf you can also add them from external URLs. If you want to update the content, Overleaf provides you with a “Refresh” button.</d-footnote>
 
 The Overleaf Zotero and Git integrations are only available for premium users, so it is not an option for everyone.
 Additionally, with the Zotero integration only the premium user can refresh the collection, and you cannot select specific sub-collections of your Zotero library.
@@ -111,7 +115,7 @@ https://api.zotero.org/groups/GGGGGG/collections/CCCCCC/items/top?format=bibtex&
 ```
 
 You can find the required IDs by navigating to the group or collection in the Zotero *web* library and looking at the URL.
-We have now found a way to get the IDs in the Zotero desktop app.
+We have not found a way to get the IDs in the Zotero desktop app.
 
 ### Advantages and Limitations of the Zotero API Approach
 
@@ -149,4 +153,14 @@ Further details and usage instructions are available in the **[GitHub repository
 ✅ Eliminates the need for manual sub-collection ID identification.  
 ❌ You need to set up a server to host the proxy.  
 
-### Conclusion
+Both solutions using the Zotero API are limited in the configuration of the BibTeX output.
+If you need more control over the output, the methods using the Better BibTeX plugin seem to be the only choice.
+
+## Conclusion
+
+Automating bibliography management in Overleaf with Zotero simplifies collaboration and reduces manual effort.
+While the Zotero API provides direct access to references, it has limitations such as entry limits and manual sub-collection selection.
+Our custom Zotero-Overleaf BibTeX Proxy overcomes these issues, offering a more flexible solution.
+
+For teams seeking an efficient, automated workflow, our proxy provides seamless integration with Overleaf
+To get started, visit our **[GitHub repository](https://github.com/UPB-SysSec/Zotero-Overleaf-BibTeX-Proxy)**.
