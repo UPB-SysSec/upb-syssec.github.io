@@ -16,7 +16,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/blog/";
           },
-        },{id: "post-automated-bibliography-management-in-overleaf-with-zotero-and-a-custom-proxy",
+        },{id: "post-china-extended-its-sni-censorship-to-quic",
+      
+        title: "China Extended its SNI Censorship to QUIC",
+      
+      description: "The GFW enforces QUIC-specific censorship",
+      section: "Posts",
+      handler: () => {
+        
+          window.location.href = "/blog/2025/quic-china/";
+        
+      },
+    },{id: "post-automated-bibliography-management-in-overleaf-with-zotero-and-a-custom-proxy",
       
         title: "Automated Bibliography Management in Overleaf with Zotero and a Custom Proxy",
       
