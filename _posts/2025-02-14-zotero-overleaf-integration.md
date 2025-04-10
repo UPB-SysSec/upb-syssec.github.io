@@ -34,7 +34,7 @@ In this post, I present a few solutions that fully or partially address them.
 Our own solution is a Zotero group with a small proxy that allows us to access the references in Overleaf; **the proxy is available on [GitHub](https://github.com/UPB-SysSec/Zotero-Overleaf-BibTeX-Proxy)**.
 
 The solutions presented in this blog post is tailored towards the Zotero reference manager.
-For the rest of this blog post, I assume that the reader is familiar with the basics of LaTeX, Overleaf, and Zotero as a reference manager. 
+For the rest of this blog post, I assume that the reader is familiar with the basics of LaTeX, Overleaf, and Zotero as a reference manager.
 
 ## Parts of the Puzzle
 
@@ -69,6 +69,7 @@ The most straightforward way to import a `.bib` file into Overleaf is to upload 
 We want to avoid this, its manual work after all, and automation is always worth it. [Right?](https://xkcd.com/1205/) [Right??](https://xkcd.com/1319/)<d-footnote>One could argue that with our proxy the main effort of the automation is already done.</d-footnote>
 
 <!-- alternatives to what? I assume alternatives to a manual import? -->
+
 Alternatives to a manual import, anytime the references change, are
 
 - using the Overleaf Zotero integration,
@@ -79,6 +80,7 @@ The Overleaf Zotero and Git integrations are only available for premium users, s
 Additionally, with the Zotero integration only the premium user can refresh the collection, and you cannot select specific sub-collections of your Zotero library.
 The Git integration is a good option if you are already using Git for your project, but it is not a solution for everyone.
 You need to
+
 - automatically update the `.bib` file in the repository, or
 - (if you work in the web interface) manually push the changes or have a script running that pushes the changes.
 
@@ -114,7 +116,7 @@ Similarly, you can get the references of a specific collection with the ID `CCCC
 https://api.zotero.org/groups/GGGGGG/collections/CCCCCC/items/top?format=bibtex&key=KKKKKK&limit=100
 ```
 
-You can find the required IDs by navigating to the group or collection in the Zotero *web* library and looking at the URL.
+You can find the required IDs by navigating to the group or collection in the Zotero _web_ library and looking at the URL.
 We have not found a way to get the IDs in the Zotero desktop app.
 
 ### Advantages and Limitations of the Zotero API Approach
@@ -122,14 +124,14 @@ We have not found a way to get the IDs in the Zotero desktop app.
 ✅ No additional tools are required.  
 ✅ Direct integration with Overleaf.  
 ❌ API responses are restricted to **100 entries per request**, so managing extensive bibliographies necessitates multiple “external files” on Overleaf.  
-❌ Requires manual retrieval and inclusion of sub-collection IDs.  
+❌ Requires manual retrieval and inclusion of sub-collection IDs.
 
 ## Utilizing Our Custom Proxy
 
 To overcome the limitations of the Zotero API, we have developed a **Zotero-Overleaf BibTeX Proxy**.
 The proxy needs to be hosted on a publicly accessible server and can be used to retrieve references from Zotero in a more user-friendly manner.
 
-Assuming the proxy is hosted at `https://example.com` and the key and group ID are configured, the following URLs can be used to retrieve references:  
+Assuming the proxy is hosted at `https://example.com` and the key and group ID are configured, the following URLs can be used to retrieve references:
 
 ```
 example.com/collection/a
@@ -151,7 +153,7 @@ Further details and usage instructions are available in the **[GitHub repository
 ✅ You can chose which sub-collection to include.  
 ✅ Simplified user-friendly URLs.  
 ✅ Eliminates the need for manual sub-collection ID identification.  
-❌ You need to set up a server to host the proxy.  
+❌ You need to set up a server to host the proxy.
 
 Both solutions using the Zotero API are limited in the configuration of the BibTeX output.
 If you need more control over the output, the methods using the Better BibTeX plugin seem to be the only choice.

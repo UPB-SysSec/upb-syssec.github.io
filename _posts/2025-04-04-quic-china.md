@@ -48,7 +48,7 @@ in January 2025, we noticed sophisticated QUIC censorship in China.
 
 Similar to Russian TSPU devices, the GFW now extracts the SNI extension from QUIC connections and blocks unwanted connections.
 As of now, the GFW's QUIC censorship operates on a limited list of hostnames, is _residual-only_, and triggers inconsistently.
-Based on these characteristics, we suspect that the deployment of QUIC censorship in the GFW is an ongoing process: 
+Based on these characteristics, we suspect that the deployment of QUIC censorship in the GFW is an ongoing process:
 This process might culminate in broad QUIC censorship by the GFW.
 This blog post details our findings.
 
