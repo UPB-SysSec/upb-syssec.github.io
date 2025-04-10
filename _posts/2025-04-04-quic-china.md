@@ -81,7 +81,7 @@ Therefore, this encryption does not protect confidentiality; still, censors need
 QUIC's choice of UDP over TCP also affects how censors deal with QUIC.
 For TCP-based protocols, censors can inject TCP Reset packets to the peers to tear down connections.
 In UDP, there is no generic connection close mechanism.
-Instead, censors may need to drop packets to stop or tear down active QUIC connections&nbsp;<d-cite key="rfc9000,elmenhorst_QuickLookQUIC_2022"/>.
+Instead, it has been suggested that censors may need to drop packets to stop or tear down active QUIC connections&nbsp;<d-cite key="rfc9000,elmenhorst_QuickLookQUIC_2022"/>.
 
 QUIC can be used as a transport for different protocols, most notably HTTP/3.
 Before attempting to connect via HTTP/3 over QUIC, browsers determine whether the destination supports QUIC.
@@ -231,7 +231,7 @@ It takes a moment for residual censorship to start---usually less than 500ms.
 
 #### 4-Tuple Residual Censorship with Additional Ports
 
-In 37% of connection attempts, follow-up packets dropped on the 4-tuple of the trigger packet, but not on the complete 3-tuple.
+In 37% of connection attempts, follow-up packets were dropped on the 4-tuple of the trigger packet, but not on the complete 3-tuple.
 In this case, the time frame is also 3 minutes. After the time frame, packet loss returns to normal.
 
 Besides 4-tuple residual censorship, we observed unusual behavior in this case:
